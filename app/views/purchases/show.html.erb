@@ -1,0 +1,31 @@
+<h1>Purchase: <%= @purchase.name %></h1>
+<h2>Total: <%= @purchase.total %></h2>
+
+<% if @products.any? %>
+<h4>Available products</h4>
+  <%= form_for(@purchase) do |f| %>
+    <div class="field">
+
+        <% @products.each do |product| %>
+          <%= check_box_tag 'product[total][]', product.price -%>
+          <%= product.name %>
+          <br>
+          <%= "The price is  only #{product.price}! 💵" %>
+          <hr>
+        <% end %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+<% else %>
+  <p>There are no products yet.</p>
+<% end %>
+
+<p><%= link_to "Edit purchase", edit_purchase_path(@purchase) %></p>
+<p><%= link_to "Delete purchase", purchase_path(@purchase),
+               :data => { :confirm => "Are you sure?",
+                          :method => "delete" } %></p>
+
+<p><%= link_to "Return to purchases index", purchases_path %></p>

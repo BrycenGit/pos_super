@@ -1,0 +1,15 @@
+<h1>purchases</h1>
+
+<% if @purchases.any? %>
+  <ul>
+    <% @purchases.each do |purchase| %>
+      <li><%= link_to purchase.name, purchase_path(purchase) %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no purchases yet.</p>
+<% end %>
+
+
+<p><%= link_to "Create new purchase", new_purchase_path %></p>
+<p><%= link_to "Return to main", products_path %></p>
