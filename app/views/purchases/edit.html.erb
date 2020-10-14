@@ -1,0 +1,18 @@
+<h1>Edit purchase</h1>
+
+<%= render "layouts/purchase_form" %>
+
+<% if @products.any? %>
+<h4>Available products</h4>
+  <%= form_for @purchase do |f| %>
+    <ul>
+      <% @products.each do |product| %>
+        <%= check_box_tag "purchase[chk][]", product.price %>
+        <%= label_tag(:product, product.name) %><br>
+      <% end %>
+    </ul>
+      <%= f.submit %>
+  <% end %>
+<% else %>
+  <p>There are no products yet.</p>
+<% end %>

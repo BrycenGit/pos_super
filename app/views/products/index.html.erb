@@ -2,11 +2,11 @@
 <iframe src="https://giphy.com/embed/beqkiz02kszV6" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/seriously-are-you-serious-antiquesroadshow-beqkiz02kszV6">via GIPHY</a></p><% if @products.any? %>
   <ul>
     <% @products.each do |product| %>
+    <hr>
       <li><%= link_to product.name, product_path(product) %></li>
       <%= "The product id is #{product.id}, 🆗 ?"%>
       <br>
       <%= "The price is  only #{product.price}! 💵"%>
-      <hr>
     <% end %>
   </ul>
 <% else %>
@@ -16,4 +16,4 @@
 
 
 <p><%= link_to "Create new product", new_product_path %></p>
-<p><%= link_to "Create new purchase", purchases_path %></p>
+<p><%= link_to "See all purchases or create a new purchase", purchases_path %></p>
